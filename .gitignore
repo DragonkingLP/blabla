@@ -1,14 +1,131 @@
-# http://www.gnu.org/software/automake
+Gui, Show, x127 y87 h500 w619, Batmans Army Keybinder
+Gui, Add, Picture, x-40 y0 w680 h500 , C:\Users\David\Desktop\Batman.png
+Gui, Add, Edit, x2 y0 w110 h20 ReadOnly, ©by TheRealBatman
+Gui, Add, Edit, x2 y30 w250 h20 ReadOnly, Alt + Numpad 1 = Türen im PD öffnen
+Gui, Add, Edit, x2 y60 w250 h20 ReadOnly, Alt + Numpad 2 = Schranke und Garage am PD öffnen
+Gui, Add, Edit, x2 y90 w250 h20 ReadOnly, Alt + Numpad 3 = Army-Tore öffnen/schließen
+Gui, Add, Edit, x2 y120 w250 h20 ReadOnly, Alt + Numpad 4 = Im PD ausrüsten
+Gui, Add, Edit, x2 y150 w250 h20 ReadOnly, Alt + Numpad 5 = In den Dienst gehen
+Gui, Add, Edit, x2 y180 w250 h20 ReadOnly, Alt + Numpad 6 = Maske auf-/absetzen
+Gui, Add, Edit, x2 y210 w250 h20 ReadOnly, Alt + Numpad 7 = Zoll öffnen
+Gui, Add, Edit, x2 y240 w250 h20 ReadOnly, Alt + Numpad 8 = Zollschließungsmenü
+Gui, Add, Edit, x2 y270 w250 h20 ReadOnly, Alt + Numpad 9 = Fahrzeuge reparieren
+Gui, Add, Edit, x342 y30 w250 h20 ReadOnly, Alt + 1 = Straßenkontrolle/Anhalten
+Gui, Add, Edit, x342 y60 w250 h20 ReadOnly, Alt + 2 = Durchsuchungsaufforderung
+Gui, Add, Edit, x342 y90 w250 h20 ReadOnly, Alt + 3 = Aufforderung Lizenzen und Perso
+Gui, Add, Edit, x342 y120 w250 h20 ReadOnly, Alt + 4 = Ergebungsaufforderung mit Schussfreigabe
+Gui, Add, Edit, x342 y150 w250 h20 ReadOnly, Alt + 5 = Vorbereitung zum Einsperren
+Gui, Add, Edit, x342 y180 w250 h20 ReadOnly, Alt + 6 = Vorbereitung aus dem Auto schmeißen
+Gui, Add, Edit, x342 y210 w250 h20 ReadOnly, Alt + 7 = Vorbereitung Handschellen anlegen
+Gui, Add, Edit, x342 y240 w250 h20 ReadOnly, Alt + 8 = Vorbereitung Durchsuchung
+Gui, Add, Edit, x342 y270 w250 h20 ReadOnly, Alt + 9 = Vorbereitung Tazer
+Gui, Add, Edit, x342 y0 w250 h20 ReadOnly, Alt + 0 = Hunterstart Meldung (Spezieller Rang)
+Gui, Add, Edit, x2 y350 w590 h40 ReadOnly, Information: Alle Vorbereitungen brauchen nur die ID und müssen danach bestätigt werden. Die einzige Vorbereitung die das nicht brauch ist die "Einsperr" Vorbereitung. Dort wird normal oder stellen eingegeben.
+Gui, Add, Edit, x2 y390 w590 h40 ReadOnly, Der Keybinder funktioniert nur in SAMP! Aktiviert/Deaktiviert wird der Keybinder mit F12
+Gui, Add, Edit, x552 y470 w70 h30 ReadOnly, V. 1.01
+return
 
-Makefile.in
+GUIclose:
+ExitApp
 
-# http://www.gnu.org/software/autoconf
+#IfWinActive, GTA:SA:MP
+#UseHook
 
-/autom4te.cache
-/aclocal.m4
-/compile
-/configure
-/depcomp
-/install-sh
-/missing
-/stamp-h1
+
+!NumPad1::
+SendInput t/pdd{enter}
+return
+
+!NumPad2::
+SendInput t/pt{enter}
+return
+
+!NumPad3::
+SendInput t/army{enter}
+return
+
+!NumPad4::
+SendInput t/ausrüsten 8{enter}
+sleep 1000
+SendInput t/ausrüsten 5{enter}
+sleep 1000
+SendInput t/ausrüsten 4{enter}
+return
+
+!NumPad5::
+SendInput t/duty{enter}
+return
+
+!NumPad6::
+SendInput t/maske{enter}
+return
+
+!NumPad7::
+SendInput t/czoll{enter}
+SendInput t/me öffnet den Zoll{enter}
+return
+
+!NumPad8::
+SendInput t/zölle{enter}
+return
+
+!NumPad9::
+SendInput t/rep{enter}
+return
+
+!9::
+SendInput t/tazer 
+return
+
+!8::
+SendInput t/frisk 
+return
+
+!7::
+SendInput t/cuff 
+return
+
+!6::
+SendInput t/eject 
+return
+
+!5::
+SendInput t/einsperren 
+return
+
+!4::
+SendInput t/m Stellen Sie sich oder wir erteilen Schussfreigabe{!}{enter}
+SendInput t/m Dazu haben Sie 10 Sekunden Zeit{!}{enter}
+SendInput t/m Waffen weg und /handsup{!}{enter}
+return
+
+!3::
+SendInput t Bitte zeigen Sie mir Ihren Ausweis und Ihre Fahrlizenzen.{enter}
+sleep 1000
+SendInput t Dies geht mit dem Befehl /show{enter}
+return
+
+!2::
+SendInput t Stimmen Sie einer Durchsuchung zu{?}{enter}
+sleep 1000
+SendInput t Anderseits bin ich dazu gezwungen Ihnen Wanteds für Verweigerung zu geben{!}{enter}
+return
+
+!1::
+SendInput t/m ~~Militärpolizei{!}~~{enter}
+sleep 1000
+SendInput t/m Bitte halten Sie rechts am Straßenrand an{!}{enter}
+sleep 1000
+SendInput t/m Ansonsten begehen Sie Flucht und Verweigerung{!}{enter}
+return
+
+!0::
+SendInput t/gov Hunter startet von der Army Base{!}{enter}
+return
+
+F12::
+Suspend
+SendInput t/me schaltet den Keybinder ein/aus{enter}
+return
+
+;CopyrightbyTheRealBatman
